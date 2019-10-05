@@ -18,6 +18,7 @@ function Posts() {
             <p>{post.body}</p>
         </div>
     ))
+    
     return (
         <div>
             {postItem}
