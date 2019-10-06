@@ -1,23 +1,16 @@
 import React, { useState } from 'react'
+import { useDispatch } from "react-redux";
+import { createPosts } from "../actions/postActions";
 
 function Postform() {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
-
+    const dispatch = useDispatch()
 
     const handleSubmit = e => {
         e.preventDefault();
-
         const post = { title, body }
-        fetch(`http://jsonplaceholder.typicode.com/posts`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(post)
-        })
-        .then(res => res.json())
-        .then(data => console.log(data))
+        dispatch(createPosts(post))
     }
 
     return (
